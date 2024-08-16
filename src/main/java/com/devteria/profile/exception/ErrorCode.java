@@ -12,8 +12,8 @@ public enum ErrorCode {
     INVALID_PASSWORD(1004, "Password must be at least {min} characters", HttpStatus.BAD_REQUEST),
     UNAUTHENTICATED(1006, "Unauthenticated", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN),
-
     EMAIL_EXITS(1008, "Email exits", HttpStatus.BAD_REQUEST),
+    USER_NOT_EXISTED(1009, "User not existed",HttpStatus.BAD_REQUEST),
     ;
 
     private final int code;
