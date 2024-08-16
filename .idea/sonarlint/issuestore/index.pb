@@ -20,3 +20,19 @@ Dsrc/main/java/com/devteria/profile/controller/ProfileController.java,6/5/6502e
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+y
+Isrc/main/java/com/devteria/profile/configuration/JwtAuthenEntryPoint.java,9/6/967a8a62c2fb1da0c0d64c534081d3a5c7508f05
+z
+Jsrc/main/java/com/devteria/profile/configuration/JetAuthenticityPoint.java,1/5/159251a131683c336a3fd5747fdadd764022f96c
+Ç
+Rsrc/main/java/com/devteria/profile/configuration/JwtAuthentiocationEntryPoint.java,3/f/3f307db18f190bcb010202210f8049eba2fa82f8
+w
+Gsrc/main/java/com/devteria/profile/configuration/CorsConfiguration.java,d/4/d465deaee81c914744ceb8ddc14bb38f0eec99fb
+Å
+Q.idea/sonarlint/securityhotspotstore/9/6/967a8a62c2fb1da0c0d64c534081d3a5c7508f05,0/5/05c93a60fcbb77f5acd81361befd2291ee20a2e5
+Å
+Qsrc/main/java/com/devteria/profile/configuration/JwtAuthenticationEntryPoint.java,f/9/f91cd555c326549dd2146b355cb199af56f3a4e4
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
