@@ -1,15 +1,17 @@
 package com.devteria.profile.exception;
 
-import com.devteria.profile.dto.identity.KeyCloakError;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.FeignException;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import org.springframework.stereotype.Component;
+
+import com.devteria.profile.dto.identity.KeyCloakError;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
@@ -30,8 +32,7 @@ public class ErrorNormalizer {
 
         try {
             log.warn("Cannot complete requets", exception);
-            var response = objectMapper.readValue(exception.contentUTF8(),
-                    KeyCloakError.class);
+            var response = objectMapper.readValue(exception.contentUTF8(), KeyCloakError.class);
 
             String errorMes = response.getErrorMessage();
 
@@ -46,5 +47,4 @@ public class ErrorNormalizer {
 
         return new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
     }
-
 }

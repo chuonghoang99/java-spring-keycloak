@@ -36,3 +36,5 @@ Qsrc/main/java/com/devteria/profile/configuration/JwtAuthenticationEntryPoint.ja
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+t
+Dsrc/main/java/com/devteria/profile/repository/ProfileRepository.java,d/2/d2d4484575b6930957964df61c5332fe99e3a3be

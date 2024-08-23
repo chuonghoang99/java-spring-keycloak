@@ -2,7 +2,7 @@ package com.devteria.profile.mapper;
 
 import java.util.List;
 
-public interface EntityMapper<D,E> {
+public interface EntityMapper<D, E> {
 
     D toDto(E e);
 
@@ -11,6 +11,4 @@ public interface EntityMapper<D,E> {
     List<D> toDto(List<E> e);
 
     List<E> toEntity(List<D> d);
-
-
 }

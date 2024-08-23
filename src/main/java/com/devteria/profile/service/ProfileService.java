@@ -1,5 +1,13 @@
 package com.devteria.profile.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
 import com.devteria.profile.dto.identity.Credential;
 import com.devteria.profile.dto.identity.TokenExchangeParam;
 import com.devteria.profile.dto.identity.UserCreationParam;
@@ -11,19 +19,13 @@ import com.devteria.profile.exception.ErrorNormalizer;
 import com.devteria.profile.mapper.ProfileMapper;
 import com.devteria.profile.repository.IdentityClient;
 import com.devteria.profile.repository.ProfileRepository;
+
 import feign.FeignException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Slf4j
@@ -45,16 +47,13 @@ public class ProfileService {
     String clientSecret;
 
     public ProfileResponse getMyProfile() {
-        var authentication =
-                SecurityContextHolder.getContext().getAuthentication();
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
 
         String userId = authentication.getName();
         var profile =
-                profileRepository.findByUserId(userId)
-                        .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+                profileRepository.findByUserId(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
         return profileMapper.toProfileResponse(profile);
     }
-
 
     public List<ProfileResponse> getAllProfiles() {
         var profiles = profileRepository.findAll();
@@ -64,27 +63,28 @@ public class ProfileService {
     public ProfileResponse register(RegistrationRequest request) {
 
         try {
-            var token =
-                    identityClient.exchangeToken(TokenExchangeParam.builder()
-                            .client_id(clientId)
-                            .client_secret(clientSecret)
-                            .scope("openid")
-                            .grant_type("client_credentials").build());
+            var token = identityClient.exchangeToken(TokenExchangeParam.builder()
+                    .client_id(clientId)
+                    .client_secret(clientSecret)
+                    .scope("openid")
+                    .grant_type("client_credentials")
+                    .build());
 
-            var creationResponse =
-                    identityClient.createUser("Bearer " + token.getAccessToken(),
-                            UserCreationParam.builder()
-                                    .username(request.getUsername())
-                                    .firstName(request.getFirstName())
-                                    .lastName(request.getLastName())
-                                    .email(request.getEmail())
-                                    .emailVerified(false)
-                                    .enabled(true)
-                                    .credentials(
-                                            List.of(Credential.builder().temporary(false).type(
-                                                            "password").value(request.getPassword())
-                                                    .build()))
-                                    .build());
+            var creationResponse = identityClient.createUser(
+                    "Bearer " + token.getAccessToken(),
+                    UserCreationParam.builder()
+                            .username(request.getUsername())
+                            .firstName(request.getFirstName())
+                            .lastName(request.getLastName())
+                            .email(request.getEmail())
+                            .emailVerified(false)
+                            .enabled(true)
+                            .credentials(List.of(Credential.builder()
+                                    .temporary(false)
+                                    .type("password")
+                                    .value(request.getPassword())
+                                    .build()))
+                            .build());
 
             String userId = extractUserId(creationResponse);
 
@@ -100,9 +100,7 @@ public class ProfileService {
         } catch (FeignException e) {
 
             throw errorNormalizer.handleKeyCloakEx(e);
-
         }
-
     }
 
     private String extractUserId(ResponseEntity<?> response) {
