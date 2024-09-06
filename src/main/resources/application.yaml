@@ -18,9 +18,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/realms/realm-chuong
+          issuer-uri: http://localhost:8180/realms/realm-chuong
 
 idp:
   url: http://localhost:8180
   client-id: client-chuong
-  client-secret: WYndftlbThwLxsUMqXxLzXYxWVojXzKB
+  client-secret: 8RvWSA0xUjAbcWlt9MrayarupSHBpJ5J

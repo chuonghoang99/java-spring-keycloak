@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,11 +40,11 @@ public class ProfileController {
         return ApiResponse.<ProfileResponse>builder().result(result).build();
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/profiles")
     ApiResponse<List<ProfileResponse>> getAllProfiles() {
 
-        var authentication =
-                SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         return ApiResponse.<List<ProfileResponse>>builder()
                 .result(profileService.getAllProfiles())
