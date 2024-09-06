@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8090
   servlet:
     context-path: /profile
 spring:
@@ -10,8 +10,8 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/postgres}
-    username: ${POSTGRES_USER:chuonghoang}
+    url: jdbc:postgresql://localhost:54321/test_db
+    username: chuonghoang
     password: 123456
 
   security:
@@ -21,6 +21,6 @@ spring:
           issuer-uri: http://localhost:8081/realms/realm-chuong
 
 idp:
-  url: http://localhost:8081
+  url: http://localhost:8180
   client-id: client-chuong
   client-secret: WYndftlbThwLxsUMqXxLzXYxWVojXzKB

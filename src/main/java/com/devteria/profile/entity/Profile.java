@@ -19,7 +19,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Profile extends AbstractEntity<String> {
+public class Profile extends AbstractEntity<Long> {
 
     // UserId from keycloak
     String userId;
