@@ -40,7 +40,7 @@ public class ProfileController {
         return ApiResponse.<ProfileResponse>builder().result(result).build();
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/profiles")
     ApiResponse<List<ProfileResponse>> getAllProfiles() {
 

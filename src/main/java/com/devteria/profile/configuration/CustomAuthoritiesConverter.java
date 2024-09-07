@@ -12,7 +12,7 @@ public class CustomAuthoritiesConverter implements Converter<Jwt, Collection<Gra
 
     private final String REAL_ACCESS = "realm_access";
 
-    private final String authorityPrefix = "SCOPE_";
+    private final String PREFIX_ROLE = "ROLE_";
 
     private final String ROLES = "roles";
 
@@ -26,7 +26,7 @@ public class CustomAuthoritiesConverter implements Converter<Jwt, Collection<Gra
         if (roles instanceof List roleList) {
             return ((List<String>) roleList)
                     .stream()
-                            .map(s -> new SimpleGrantedAuthority(authorityPrefix + s))
+                            .map(s -> new SimpleGrantedAuthority(PREFIX_ROLE + s))
                             .collect(Collectors.toList());
         }
 
