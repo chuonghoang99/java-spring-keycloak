@@ -24,3 +24,13 @@ idp:
   url: http://localhost:8180
   client-id: client-chuong
   client-secret: 8RvWSA0xUjAbcWlt9MrayarupSHBpJ5J
+
+integration:
+  minio:
+    access-key: root
+    secret-key: admin@123456
+    url: http://localhost:9000
+
+  redis:
+    host: localhost
+    port: 6379

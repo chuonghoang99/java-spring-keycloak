@@ -15,7 +15,7 @@ public enum ErrorCode {
     UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN),
     EMAIL_EXITS(1008, "Email exits", HttpStatus.BAD_REQUEST),
     USER_NOT_EXISTED(1009, "User not existed", HttpStatus.BAD_REQUEST),
-    ;
+    DOWNLOAD_FILE_ERROR(1010, "Upload file fail", HttpStatus.BAD_REQUEST);
 
     private final int code;
     private final String message;
